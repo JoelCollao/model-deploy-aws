@@ -1,4 +1,4 @@
-name: Deploy to ECR and Lambda
+name: Deploy to ECR
 
 on:
   push:
@@ -25,10 +25,3 @@ jobs:
           docker build -t model-deploy-aws .
           docker tag model-deploy-aws:latest 140910872380.dkr.ecr.us-east-2.amazonaws.com/model-deploy-aws:latest
           docker push 140910872380.dkr.ecr.us-east-2.amazonaws.com/model-deploy-aws:latest
-
-      - name: Update Lambda function with new image
-        run: |
-          aws lambda update-function-code \
-            --function-name model-deploy-aws \
-            --image-uri 140910872380.dkr.ecr.us-east-2.amazonaws.com/model-deploy-aws:latest \
-            --region us-east-2

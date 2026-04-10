@@ -124,7 +124,7 @@ python app.py
 
 ## Docker
 
-### Construir la imagen --
+### Construir la imagen --datos
 
 ```bash
 docker build -t diabetes-model-api .
